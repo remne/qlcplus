@@ -114,7 +114,7 @@ HEADERS += bus.h \
 qmlui|greaterThan(QT_MAJOR_VERSION, 5) {
   HEADERS += rgbscriptv4.h scriptrunner.h scriptv4.h
 } else {
-  HEADERS += rgbscript.h script.h
+  HEADERS += rgbscript.h script.h luascript.h
 }
 
 win32:HEADERS += mastertimer-win32.h
@@ -189,7 +189,7 @@ SOURCES += bus.cpp \
 qmlui|greaterThan(QT_MAJOR_VERSION, 5) {
   SOURCES += rgbscriptv4.cpp scriptrunner.cpp scriptv4.cpp
 } else {
-  SOURCES += rgbscript.cpp script.cpp
+  SOURCES += rgbscript.cpp script.cpp luascript.cpp
 }
 
 win32:SOURCES += mastertimer-win32.cpp

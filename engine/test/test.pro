@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
-SUBDIRS += bus
+#SUBDIRS += bus
 SUBDIRS += chaser
 SUBDIRS += chaserrunner
 SUBDIRS += chaserstep

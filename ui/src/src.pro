@@ -101,6 +101,7 @@ HEADERS += aboutbox.h \
            rgbitem.h \
            sceneeditor.h \
            scripteditor.h \
+           luascripteditor.h \
            selectinputchannel.h \
            simpledesk.h \
            simpledeskengine.h \
@@ -282,6 +283,7 @@ SOURCES += aboutbox.cpp \
            rgbitem.cpp \
            sceneeditor.cpp \
            scripteditor.cpp \
+           luascripteditor.cpp \
            selectinputchannel.cpp \
            simpledesk.cpp \
            simpledeskengine.cpp \

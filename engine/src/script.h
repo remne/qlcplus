@@ -87,13 +87,13 @@ public:
      ************************************************************************/
 public:
     /** Set the raw script data */
-    bool setData(const QString& str);
+    virtual bool setData(const QString& str);
 
     /** Append a line of script to the raw data */
-    bool appendData(const QString& str);
+    virtual bool appendData(const QString& str);
 
     /** Get the raw script data */
-    QString data() const;
+    virtual QString data() const;
 
     /** Get the script data lines as a list of  strings */
     QStringList dataLines() const;

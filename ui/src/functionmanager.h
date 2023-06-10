@@ -122,6 +122,7 @@ protected slots:
     void slotAddEFX();
     void slotAddRGBMatrix();
     void slotAddScript();
+    void slotAddLuaScript();
     void slotAddAudio();
     void slotAddVideo();
     void slotAddFolder();
@@ -146,6 +147,7 @@ protected:
     QAction* m_addEFXAction;
     QAction* m_addRGBMatrixAction;
     QAction* m_addScriptAction;
+    QAction* m_addLuaScriptAction;
     QAction* m_addAudioAction;
     QAction* m_addVideoAction;
 

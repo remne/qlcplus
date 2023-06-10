@@ -28,7 +28,9 @@
 #if QT_VERSION >= QT_VERSION_CHECK(5, 10, 0)
 #include <QRandomGenerator>
 #endif
- 
+
+#include <iostream>
+
 #include "genericfader.h"
 #include "fadechannel.h"
 #include "mastertimer.h"
@@ -339,6 +341,9 @@ void Script::write(MasterTimer *timer, QList<Universe *> universes)
         return;
 
     incrementElapsed();
+
+    std::cout << "HEJSAN" << m_currentCommand << std::endl;
+
 
     if (waiting() == false)
     {

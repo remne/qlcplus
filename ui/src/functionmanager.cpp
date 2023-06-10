@@ -46,6 +46,7 @@
 #include "functionwizard.h"
 #include "chasereditor.h"
 #include "scripteditor.h"
+#include "luascripteditor.h"
 #include "sceneeditor.h"
 #include "audioeditor.h"
 #include "videoeditor.h"
@@ -59,12 +60,16 @@
 #include "apputil.h"
 #include "chaser.h"
 #include "script.h"
+#include "luascript.h"
 #include "scene.h"
 #include "audio.h"
 #include "video.h"
 #include "show.h"
 #include "doc.h"
 #include "efx.h"
+
+#include <iostream>
+
 
 #define COL_NAME 0
 #define COL_PATH 1
@@ -241,6 +246,12 @@ void FunctionManager::initActions()
     connect(m_addScriptAction, SIGNAL(triggered(bool)),
             this, SLOT(slotAddScript()));
 
+    m_addLuaScriptAction = new QAction(QIcon(":/script.png"),
+                                 tr("New Lua scrip&t"), this);
+    //m_addLuaScriptAction->setShortcut(QKeySequence("CTRL+7"));
+    connect(m_addLuaScriptAction, SIGNAL(triggered(bool)),
+            this, SLOT(slotAddLuaScript()));
+
     m_addAudioAction = new QAction(QIcon(":/audio.png"),
                                    tr("New au&dio"), this);
     m_addAudioAction->setShortcut(QKeySequence("CTRL+8"));
@@ -304,6 +315,7 @@ void FunctionManager::initToolbar()
     m_toolbar->addAction(m_addCollectionAction);
     m_toolbar->addAction(m_addRGBMatrixAction);
     m_toolbar->addAction(m_addScriptAction);
+    m_toolbar->addAction(m_addLuaScriptAction);
     m_toolbar->addAction(m_addAudioAction);
     m_toolbar->addAction(m_addVideoAction);
     m_toolbar->addSeparator();
@@ -414,6 +426,19 @@ void FunctionManager::slotAddScript()
         QTreeWidgetItem* item = m_tree->functionItem(f);
         Q_ASSERT(item != NULL);
         f->setName(QString("%1 %2").arg(tr("New Script")).arg(f->id()));
+        m_tree->scrollToItem(item);
+        m_tree->setCurrentItem(item);
+    }
+}
+
+void FunctionManager::slotAddLuaScript()
+{
+    Function* f = new LuaScript(m_doc);
+    if (m_doc->addFunction(f) == true)
+    {
+        QTreeWidgetItem* item = m_tree->functionItem(f);
+        Q_ASSERT(item != NULL);
+        f->setName(QString("%1 %2").arg(tr("New Lua Script")).arg(f->id()));
         m_tree->scrollToItem(item);
         m_tree->setCurrentItem(item);
     }
@@ -941,6 +966,12 @@ void FunctionManager::editFunction(Function* function)
     else if (function->type() == Function::ScriptType)
     {
         m_editor = new ScriptEditor(m_hsplitter->widget(1), qobject_cast<Script*> (function), m_doc);
+    }
+    else if (function->type() == Function::LuaScriptType)
+    {
+        std::cout << "editFunction()! lua!! script" << std::endl;
+        //m_editor = new ScriptEditor(m_hsplitter->widget(1), qobject_cast<Script*> (function), m_doc);
+        m_editor = new LuaScriptEditor(m_hsplitter->widget(1), qobject_cast<LuaScript*> (function), m_doc);
     }
     else if (function->type() == Function::ShowType)
     {

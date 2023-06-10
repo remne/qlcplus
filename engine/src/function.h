@@ -120,6 +120,7 @@ public:
 #if QT_VERSION >= 0x050000
         , VideoType    = 1 << 9
 #endif
+        , LuaScriptType = 1 << 10
     };
 #if QT_VERSION >= 0x050500
     Q_ENUM(Type)

@@ -21,6 +21,8 @@ unix:QMAKE_CFLAGS += -Werror
 
 CONFIG         += warn_on
 
+CONFIG += console
+
 # Mobile platforms are QML only
 android|ios: CONFIG += qmlui
 

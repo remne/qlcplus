@@ -48,6 +48,7 @@ const QString KChaserString     (     "Chaser" );
 const QString KEFXString        (        "EFX" );
 const QString KCollectionString ( "Collection" );
 const QString KScriptString     (     "Script" );
+const QString KLuaScriptString  (     "Script" );
 const QString KRGBMatrixString  (  "RGBMatrix" );
 const QString KShowString       (       "Show" );
 const QString KSequenceString   (   "Sequence" );
@@ -252,6 +253,7 @@ QString Function::typeToString(Type type)
         case SequenceType:   return KSequenceString;
         case AudioType:      return KAudioString;
         case VideoType:      return KVideoString;
+        case LuaScriptType:  return KLuaScriptString;
         case Undefined:
         default:
             return KUndefinedString;
@@ -280,6 +282,8 @@ Function::Type Function::stringToType(const QString& string)
         return AudioType;
     else if (string == KVideoString)
         return VideoType;
+    else if (string == KLuaScriptString)
+        return LuaScriptType;
     else
         return Undefined;
 }
