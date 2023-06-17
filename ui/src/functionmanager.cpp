@@ -95,6 +95,7 @@ FunctionManager::FunctionManager(QWidget* parent, Doc* doc)
     , m_addEFXAction(NULL)
     , m_addRGBMatrixAction(NULL)
     , m_addScriptAction(NULL)
+    , m_addLuaScriptAction(NULL)
     , m_addAudioAction(NULL)
     , m_addVideoAction(NULL)
     , m_autostartAction(NULL)
@@ -849,6 +850,7 @@ void FunctionManager::slotTreeContextMenuRequested()
     menu.addAction(m_addCollectionAction);
     menu.addAction(m_addRGBMatrixAction);
     menu.addAction(m_addScriptAction);
+    menu.addAction(m_addLuaScriptAction);
     menu.addAction(m_addAudioAction);
     menu.addAction(m_addVideoAction);
     menu.addSeparator();

@@ -23,7 +23,7 @@
    <Address>0</Address>
    <Channels>3</Channels>
   </Fixture>
-  <Function ID="0" Type="Script" Name="New Lua Script 0">
+  <Function ID="0" Type="LuaScript" Name="New Lua Script 0">
    <Speed FadeIn="0" FadeOut="0" Duration="0"/>
    <Direction>Forward</Direction>
    <RunOrder>Loop</RunOrder>

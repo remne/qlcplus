@@ -18,6 +18,7 @@
   limitations under the License.
 */
 
+#include <iostream>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <QElapsedTimer>
@@ -28,6 +29,7 @@
 #include "qlcmacros.h"
 
 #include "scriptwrapper.h"
+#include "luascript.h"
 #include "mastertimer.h"
 #include "collection.h"
 #include "rgbmatrix.h"
@@ -48,7 +50,7 @@ const QString KChaserString     (     "Chaser" );
 const QString KEFXString        (        "EFX" );
 const QString KCollectionString ( "Collection" );
 const QString KScriptString     (     "Script" );
-const QString KLuaScriptString  (     "Script" );
+const QString KLuaScriptString  (     "LuaScript" );
 const QString KRGBMatrixString  (  "RGBMatrix" );
 const QString KShowString       (       "Show" );
 const QString KSequenceString   (   "Sequence" );
@@ -903,6 +905,8 @@ bool Function::loader(QXmlStreamReader &root, Doc* doc)
         function = new class EFX(doc);
     else if (type == Function::ScriptType)
         function = new class Script(doc);
+    else if (type == Function::LuaScriptType)
+        function = new class LuaScript(doc);
     else if (type == Function::RGBMatrixType)
         function = new class RGBMatrix(doc);
     else if (type == Function::ShowType)
@@ -914,7 +918,10 @@ bool Function::loader(QXmlStreamReader &root, Doc* doc)
     else if (type == Function::VideoType)
         function = new class Video(doc);
     else
+    {
+        std::cout << "unknown function type!" << std::endl;
         return false;
+    }
 
     function->setName(name);
     function->setPath(path);

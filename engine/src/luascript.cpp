@@ -69,7 +69,7 @@ bool LuaScript::loadXML(QXmlStreamReader &root)
 
     QXmlStreamAttributes attrs = root.attributes();
 
-    if (attrs.value(KXMLQLCFunctionType).toString() != typeToString(Function::ScriptType))
+    if (attrs.value(KXMLQLCFunctionType).toString() != typeToString(Function::LuaScriptType))
     {
         qWarning() << Q_FUNC_INFO << root.attributes().value(KXMLQLCFunctionType).toString()
                    << "is not a script";
