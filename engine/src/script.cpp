@@ -247,6 +247,7 @@ QList<int> Script::syntaxErrorsLines()
 
 bool Script::loadXML(QXmlStreamReader &root)
 {
+    std::cout << "loadXML vanligt script" << std::endl;
     if (root.name() != KXMLQLCFunction)
     {
         qWarning() << Q_FUNC_INFO << "Function node not found";

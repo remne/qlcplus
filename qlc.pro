@@ -1,8 +1,5 @@
 include(variables.pri)
 
-CONFIG += static
-CONFIG += staticlib
-
 TEMPLATE = subdirs
 
 SUBDIRS        += hotplugmonitor

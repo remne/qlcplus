@@ -970,7 +970,6 @@ void FunctionManager::editFunction(Function* function)
     else if (function->type() == Function::LuaScriptType)
     {
         std::cout << "editFunction()! lua!! script" << std::endl;
-        //m_editor = new ScriptEditor(m_hsplitter->widget(1), qobject_cast<Script*> (function), m_doc);
         m_editor = new LuaScriptEditor(m_hsplitter->widget(1), qobject_cast<LuaScript*> (function), m_doc);
     }
     else if (function->type() == Function::ShowType)

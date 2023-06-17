@@ -39,6 +39,7 @@
 #include "rgbscriptscache.h"
 #include "channelsgroup.h"
 #include "scriptwrapper.h"
+#include "luascript.h"
 #include "collection.h"
 #include "function.h"
 #include "universe.h"
@@ -93,7 +94,7 @@ Doc::Doc(QObject* parent, int universes)
 #if QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
     qsrand(QTime::currentTime().msec());
 #endif
-    
+
 }
 
 Doc::~Doc()
@@ -1185,6 +1186,29 @@ QList<quint32> Doc::getUsage(quint32 fid)
                 }
             }
             break;
+
+            case Function::LuaScriptType:
+            {
+                //LuaScript *s = qobject_cast<LuaScript *>(f);
+                qInfo() << "HEJ";
+                /*
+                QList<quint32> l = s->functionList();
+                for (int i = 0; i < l.count(); i+=2)
+                {
+                    if (l.at(i) == fid)
+                    {
+                        if (i + 1 >= l.count()) {
+                            qDebug() << "Doc::getUsage: Index entry missing on " << f->name();
+                            break;
+                        }
+                        usageList.append(s->id());
+                        usageList.append(l.at(i + 1)); // line number
+                    }
+                }
+                */
+            }
+            break;
+
             case Function::ShowType:
             {
                 Show *s = qobject_cast<Show *>(f);

@@ -2,6 +2,7 @@
 
 #include <QtCore/QMetaObject>
 #include <QtCore/QString>
+#include <QList>
 
 #include "function.h"
 
@@ -30,6 +31,10 @@ public:
     bool copyFrom(const Function* function) override;
     bool loadXML(QXmlStreamReader &root) override;
     bool saveXML(QXmlStreamWriter *doc) override;
+
+    void preRun(MasterTimer *timer) override;
+    void write(MasterTimer *timer, QList<Universe*> universes) override;
+    void postRun(MasterTimer *timer, QList<Universe*> universes) override;
 
 /*
     bool setData(const QString& str);

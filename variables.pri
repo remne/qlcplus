@@ -21,6 +21,9 @@ unix:QMAKE_CFLAGS += -Werror
 
 CONFIG         += warn_on
 
+CONFIG += static
+CONFIG += staticlib
+
 CONFIG += console
 
 # Mobile platforms are QML only
